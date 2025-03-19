@@ -132,6 +132,8 @@ dependencies {
     androidTestImplementation(libs.kotlin.test)
 
     baselineProfile(projects.benchmarks)
+    implementation("com.bugsnag:bugsnag-android:6.+")
+    implementation("com.bugsnag:bugsnag-android-performance:1.+")
 }
 
 baselineProfile {
