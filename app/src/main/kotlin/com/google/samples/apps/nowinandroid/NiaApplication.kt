@@ -26,6 +26,8 @@ import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
+import com.bugsnag.android.Bugsnag
+import com.bugsnag.android.performance.BugsnagPerformance
 
 /**
  * [Application] class for NiA
@@ -40,6 +42,8 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
     override fun onCreate() {
         super.onCreate()
+        Bugsnag.start(this)
+        BugsnagPerformance.start(this)
 
         setStrictModePolicy()
 
