@@ -61,6 +61,7 @@ import com.google.samples.apps.nowinandroid.feature.topic.navigation.TopicRoute
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import kotlin.math.max
+import com.bugsnag.android.Bugsnag
 
 @Serializable internal object TopicPlaceholderRoute
 
@@ -130,6 +131,11 @@ internal fun InterestsListDetailScreen(
 
     fun onTopicClickShowDetailPane(topicId: String) {
         onTopicClick(topicId)
+        try {
+            Bugsnag.notify(RuntimeException("My first Test error"))
+        } catch (e: Exception) {
+            TODO("Not yet implemented")
+        }
         topicRoute = TopicRoute(id = topicId)
         coroutineScope.launch {
             listDetailNavigator.navigateTo(ListDetailPaneScaffoldRole.Detail)
